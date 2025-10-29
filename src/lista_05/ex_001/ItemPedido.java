@@ -37,10 +37,7 @@ public class ItemPedido {
     }
 
     // Checar disponibilidade de estoque
-    public boolean disponibilidade(ItemPedido item) {
-        if (item.getQuantidade() < item.getProduto().getQuantidadeEstoque()){
-            return false;
-        }
-        return true;
+    public boolean disponibilidade() {
+        return quantidade <= produto.getQuantidadeEstoque();
     }
 }

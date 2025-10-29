@@ -12,32 +12,31 @@ public class Pedido {
         this.metodoPagamento = metodoPagamento;
     }
 
-    public boolean checarDisponibilidade(Pedido pedido) {
+    public boolean checarDisponibilidade() {
         for (ItemPedido item: itens) {
-            if (item.disponibilidade(item) == false) {
+            if (item.disponibilidade() == false) {
                 return false;
             }
         }
         return true;
     }
 
-    public void mostraPedido(Pedido pedido) {
-        if (pedido != null && checarDisponibilidade(pedido)==true) {
+    public void mostrarPedido() {
+        if (checarDisponibilidade()) {
             double total = 0;
-            for(ItemPedido item: itens) {
-                System.out.println(item.getProduto().getNome() + " - " + item.getProduto().getPreco() + " - " + item.getQuantidade());
-                double subtotal = (item.getProduto().getPreco()) * (item.getQuantidade());
-                total += subtotal;
+            for (ItemPedido item : itens) {
+                System.out.println(item.getProduto().getNome() + " - R$" + 
+                    item.getProduto().getPreco() + " - " + item.getQuantidade() + 
+                    " unidades - Subtotal: R$" + item.calcularSubtotal());
+                total += item.calcularSubtotal();
+                
+                item.processarItem();
             }
-            System.out.println("Total: " + total);
+            System.out.println("Total:" + total);
             System.out.println("Método de pagamento: " + metodoPagamento);
-            atualizarEstoque(pedido);
+        } else {
+            System.out.println("Itens sem estoque suficiente");
         }
     }
-    
-    public void atualizarEstoque(Pedido pedido) {
-        for (ItemPedido item: itens) {
-            item.getProduto().reduzirEstoque(item.getQuantidade());
-        }
-    }
+
 }
