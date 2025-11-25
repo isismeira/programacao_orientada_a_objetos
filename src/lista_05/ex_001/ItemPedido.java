@@ -1,5 +1,4 @@
 package lista_05.ex_001;
-// ...cada item especifica o produto que o cliente deseja e a respectiva quantidade.
 
 public class ItemPedido {
     private Produto produto;

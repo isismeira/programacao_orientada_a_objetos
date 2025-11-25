@@ -1,4 +1,4 @@
-package lista06.ex_001;
+package lista_06.ex_001;
 
 public class Calculadora {
     private double valorMemoria;
