@@ -12,7 +12,7 @@ public class ex003 {
         int count = 0;
         String s_low = s.toLowerCase();
         for (int i = 0; i < s_low.length(); i++) {
-            if  (  s.charAt(i) == 'a'  ) {
+            if  (  s_low.charAt(i) == 'a'  ) {
                 count++;
             }
         }
